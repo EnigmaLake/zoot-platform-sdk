@@ -13,7 +13,7 @@
     "build": "rollup -c --configPlugin @rollup/plugin-typescript",
     "prettier": "prettier --write ./src",
     "production": "npm run version:bump --silent && npm run version:add --silent",
-    "test": "jest --maxWorkers=50% --forceExit"
+    "test": "jest --maxWorkers=50% --forceExit --passWithNoTests"
   },
   "author": "",
   "license": "ISC",
