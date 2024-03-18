@@ -62,5 +62,8 @@
     "i": "^0.3.7",
     "npm": "^10.5.0",
     "rollup-plugin-import-css": "^3.5.0"
+  },
+  "publishConfig": {
+    "@denisaapopa:registry": "https://npm.pkg.github.com"  
   }
 }
