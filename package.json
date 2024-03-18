@@ -37,6 +37,10 @@
     "rollup-plugin-dts": "^5.2.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-summary": "2.0.0",
+    "rollup-plugin-svg": "2.0.0",
+    "rollup-plugin-css-only": "4.5.2",
+    "rollup-plugin-postcss":"4.0.2",
+    "@svgr/rollup":"8.1.0",
     "typescript": "5.2.2"
   },
   "types": "./dist/index.d.ts",

@@ -1,8 +1,6 @@
 export * as events from "./events";
 export * as utils from "./utils";
 
-import './icons/style.css';
-
 export enum EVENTS {
   EL_USER_BALANCE = "EL_USER_BALANCE",
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",

@@ -1,6 +1,5 @@
 export * as events from "./events";
 export * as utils from "./utils";
-import './icons/style.css';
 export var EVENTS;
 (function (EVENTS) {
     EVENTS["EL_USER_BALANCE"] = "EL_USER_BALANCE";
