@@ -1,5 +1,5 @@
 {
-  "name": "@enigma-lake/el-client-zoot-game-integration-sdk",
+  "name": "@enigma-lake/zoot-game-integration-sdk",
   "version": "1.0.1",
   "description": "Client game integration SDK",
   "main": "dist/index.js",
@@ -47,7 +47,7 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EnigmaLake/el-client-zoot-game-integration-sdk.git"
+    "url": "git+https://github.com/EnigmaLake/zoot-game-integration-sdk.git"
   },
   "keywords": [
     "enigma-lake",
@@ -55,9 +55,9 @@
     "zoot"
   ],
   "bugs": {
-    "url": "https://github.com/EnigmaLake/el-client-zoot-game-integration-sdk/issues"
+    "url": "https://github.com/EnigmaLake/zoot-game-integration-sdk/issues"
   },
-  "homepage": "https://github.com/EnigmaLake/el-client-zoot-game-integration-sdk#readme",
+  "homepage": "https://github.com/EnigmaLake/zoot-game-integration-sdk#readme",
   "dependencies": {
     "i": "^0.3.7",
     "npm": "^10.5.0",

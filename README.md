@@ -1,1 +1,1 @@
-# client-zoot-game-integration-sdk
+# zoot-game-integration-sdk
