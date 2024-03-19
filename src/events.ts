@@ -1,4 +1,4 @@
-import { DataEvent, EVENTS, UserCurrency, Notification, ZootEvent } from "./types";
+import { DataEvent, EVENTS, UserCurrency, Notification } from "./types";
 
 export const sendEventResponse = async (event: EVENTS, data?: DataEvent) => {
   if (typeof window !== "undefined") {

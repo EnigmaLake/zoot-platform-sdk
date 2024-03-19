@@ -55,4 +55,7 @@ interface GetUserBalanceEvent {
   data: UserBalance;
 }
 
-export type ZootEvent = GetUserBalanceEvent | GetUserCurrencyEvent | GetUserInformationEvent;
+export type ZootEvent =
+  | GetUserBalanceEvent
+  | GetUserCurrencyEvent
+  | GetUserInformationEvent;
