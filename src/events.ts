@@ -1,4 +1,4 @@
-import { DataEvent, EVENTS, Notification, UserCurrency } from ".";
+import { EVENTS, DataEvent, UserCurrency, Notification } from "./index.js";
 
 export const sendEventResponse = async (event: EVENTS, data?: DataEvent) => {
   if (typeof window !== "undefined") {
