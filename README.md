@@ -19,7 +19,7 @@ npm install @enigma-lake/zoot-game-integrations-sdk
 
 2. **Integration**: You can import the entire package using the syntax 
 ``` js
-import zootSDK from '@enigma-lake/zoot-game-integration-sdk';
+import * as zootSDK from '@enigma-lake/zoot-game-integration-sdk';
 ```
 or you can import specific types, events, and methods individually, such as: 
 ``` js
