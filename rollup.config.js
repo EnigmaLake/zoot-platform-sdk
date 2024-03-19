@@ -4,7 +4,6 @@ import typescript from "@rollup/plugin-typescript";
 import tsconfig from "./tsconfig.json" assert { type: "json" };
 import terser from "@rollup/plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
 import summary from "rollup-plugin-summary";
 import postcss from 'rollup-plugin-postcss'
 import svgr from '@svgr/rollup'
@@ -29,7 +28,6 @@ export default [
     plugins: [
       esbuild(),
       typescript(tsconfig),
-      commonjs(),
       nodeResolve({ preferBuiltins: false }),
       terser({
         module: true,
@@ -39,11 +37,6 @@ export default [
     output: [
       {
         file: `${name}.js`,
-        format: "cjs",
-        sourcemap: true
-      },
-      {
-        file: `${name}.mjs`,
         format: "es",
         sourcemap: true
       },
@@ -64,7 +57,6 @@ export default [
       {
         file: 'dist/bundle.css',
         format: "es",
-        sourcemap: true
       },
     ],
   }),

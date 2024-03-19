@@ -1,4 +1,4 @@
-import { Currency } from "./index.js";
+import { Currency } from "./types";
 
 export const getCurrentBalance = ({
   balance,
