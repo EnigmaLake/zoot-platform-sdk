@@ -52,7 +52,7 @@ To facilitate these events, you can easily trigger them by calling specific meth
 - For acquiring user currency information, employ **```getUserCurrencyEvent()```**.
 - If you require user information such as username, session, or avatar, call **```getUserInformationEvent()```**.
 - To initiate the purchase flow for acquiring coins, utilize **```purchaseCoinsEvent()```**.
-- For triggering the login flow, use **````loginUserEvent()```**.
+- For triggering the login flow, use **```loginUserEvent()```**.
 - If you want to request all user data at once, simply invoke the function **```requestInitData()```**.
 - Alternatively, you can dispatch toast notification messages directly to the Enigma Lake Zoot client by invoking the method **```showNotificationEvent(message: Notification)```**.
 
