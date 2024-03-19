@@ -1,4 +1,4 @@
-import { DataEvent, EVENTS, UserCurrency, Notification } from "./types";
+import { DataEvent, EVENTS, UserCurrency, Notification, ZootEvent } from "./types";
 
 export const sendEventResponse = async (event: EVENTS, data?: DataEvent) => {
   if (typeof window !== "undefined") {
@@ -40,7 +40,7 @@ export const getParticipantListEvent = async () => {
   await sendEventResponse(EVENTS.EL_PLAY_PARTICIPANTS);
 };
 
-export const getUserBulkDataEvent = async () => {
+export const requestInitData = async () => {
   await getUserBalanceEvent();
   await getUserCurrencyEvent();
   await getUserInformationEvent();
