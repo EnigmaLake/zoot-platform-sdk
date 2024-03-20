@@ -122,4 +122,7 @@ export type ZootEvent = GetUserBalanceEvent | GetUserCurrencyEvent | GetUserInfo
 ```
 
 #### Currency Information
-Enigma Lake Zoot supports two currencies: **sweeps** and **gold**. You can visually represent these coins using the CSS classes **```sweeps_icon```** for sweeps and **```gold_icon```** for gold.
+Enigma Lake Zoot supports two currencies: **sweeps** and **gold**. You can visually represent these coins using the CSS classes **```sweeps_icon```** for sweeps and **```gold_icon```** for gold after importing the CSS file into your root file:
+```js
+import '@enigma-lake/zoot-game-integration-sdk/dist/bundle.css';
+```
