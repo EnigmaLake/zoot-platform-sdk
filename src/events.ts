@@ -1,6 +1,9 @@
-import { DataEvent, EVENTS, UserCurrency, Notification } from "./types";
+import { RequestDataEvent, EVENTS, UserCurrency, Notification } from "./types";
 
-export const sendEventResponse = async (event: EVENTS, data?: DataEvent) => {
+export const sendEventResponse = async (
+  event: EVENTS,
+  data?: RequestDataEvent
+) => {
   if (typeof window !== "undefined") {
     const message = JSON.parse(
       JSON.stringify({
@@ -36,17 +39,12 @@ export const purchaseCoinsEvent = async () => {
   await sendEventResponse(EVENTS.EL_PURCHASE_COINS);
 };
 
-export const getParticipantListEvent = async () => {
-  await sendEventResponse(EVENTS.EL_PLAY_PARTICIPANTS);
+export const showNotificationEvent = async (message: Notification) => {
+  await sendEventResponse(EVENTS.EL_SHOW_TOAST, message);
 };
 
 export const requestInitData = async () => {
   await getUserBalanceEvent();
   await getUserCurrencyEvent();
   await getUserInformationEvent();
-  await getParticipantListEvent();
-};
-
-export const showNotificationEvent = async (message: Notification) => {
-  await sendEventResponse(EVENTS.EL_SHOW_TOAST, message);
 };

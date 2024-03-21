@@ -14,7 +14,7 @@ To start using the Enigma Lake Zoot Game Integration SDK, follow these steps:
 
 1. **Installation**: Install the SDK via npm:
 ```bash 
-npm install @enigma-lake/zoot-game-integrations-sdk
+npm install @enigma-lake/zoot-game-integration-sdk
 ```
 
 2. **Integration**: You can import the entire package using the syntax 
@@ -49,7 +49,8 @@ window.addEventListener('message', (event: MessageEvent<ZootEvent>) => {
 To facilitate these events, you can easily trigger them by calling specific methods based on your information needs:
 
 - To retrieve the user balance, utilize the method **```getUserBalanceEvent()```**.
-- For acquiring user currency information, employ **```getUserCurrencyEvent()```**.
+- For acquiring user currency information, use **```getUserCurrencyEvent()```**.
+- To change the user currency, use **```setUserCurrencyEvent(data: UserCurrency)```**.
 - If you require user information such as username, session, or avatar, call **```getUserInformationEvent()```**.
 - To initiate the purchase flow for acquiring coins, utilize **```purchaseCoinsEvent()```**.
 - For triggering the login flow, use **```loginUserEvent()```**.
@@ -60,64 +61,67 @@ To facilitate these events, you can easily trigger them by calling specific meth
 These data types define the events, user information, currency details, and notifications used within the Enigma Lake Zoot platform integration.
 
 ```js
-export declare enum EVENTS {
-    EL_USER_BALANCE = "EL_USER_BALANCE",
-    EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
-    EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
-    EL_USER_INFORMATION = "EL_USER_INFORMATION",
-    EL_PLAY_PARTICIPANTS = "EL_PLAY_PARTICIPANTS",
-    EL_LOGIN_USER = "EL_LOGIN_USER",
-    EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
-    EL_SHOW_TOAST = "EL_SHOW_TOAST"
+export enum EVENTS {
+  EL_USER_BALANCE = "EL_USER_BALANCE",
+  EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
+  EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
+  EL_USER_INFORMATION = "EL_USER_INFORMATION",
+  EL_LOGIN_USER = "EL_LOGIN_USER",
+  EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
+  EL_SHOW_TOAST = "EL_SHOW_TOAST",
 }
 
 export interface UserBalance {
-    sweepsBalance: number;
-    goldBalance: number;
+  sweepsBalance: number;
+  goldBalance: number;
 }
 
 export interface UserCurrency {
-    currency: Currency;
+  currency: Currency;
 }
 
-export type User = {
-    id: number;
-    nickname: string;
-    avatar: string;
-    accessToken: string;
+export type UserInformation = {
+  id: number;
+  nickname?: string;
+  avatar?: string;
+  accessToken: string;
 };
 
 export interface Notification {
-    type: "success" | "error" | "info" | "custom";
-    message: string;
+  type: "success" | "error" | "info" | "custom";
+  message: string;
 }
 
-export declare enum Currency {
-    SWEEPS = "sweeps",
-    GOLD = "gold"
+export enum Currency {
+  SWEEPS = "sweeps",
+  GOLD = "gold",
 }
 
-export type DataEvent = UserBalance | UserCurrency | Notification;
+export type RequestDataEvent = UserBalance | UserCurrency | Notification | UserInformation;
 
-interface GetUserInformationEvent {
-    type: EVENTS.EL_USER_INFORMATION;
-    event_id: EVENTS.EL_USER_INFORMATION;
-    data: User;
+export interface GetUserInformationEvent {
+  type: EVENTS.EL_USER_INFORMATION;
+  event_id: EVENTS.EL_USER_INFORMATION;
+  data: UserInformation;
 }
 
-interface GetUserCurrencyEvent {
-    type: EVENTS.EL_GET_USER_CURRENCY;
-    event_id: EVENTS.EL_GET_USER_CURRENCY;
-    data: UserCurrency;
+export interface GetUserCurrencyEvent {
+  type: EVENTS.EL_GET_USER_CURRENCY;
+  event_id: EVENTS.EL_GET_USER_CURRENCY;
+  data: UserCurrency;
 }
 
-interface GetUserBalanceEvent {
-    type: EVENTS.EL_USER_BALANCE;
-    event_id: EVENTS.EL_USER_BALANCE;
-    data: UserBalance;
+export interface GetUserBalanceEvent {
+  type: EVENTS.EL_USER_BALANCE;
+  event_id: EVENTS.EL_USER_BALANCE;
+  data: UserBalance;
 }
 
-export type ZootEvent = GetUserBalanceEvent | GetUserCurrencyEvent | GetUserInformationEvent;
+
+export type ZootEvent =
+  | GetUserBalanceEvent
+  | GetUserCurrencyEvent
+  | GetUserInformationEvent;
 
 ```
 

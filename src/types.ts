@@ -3,7 +3,6 @@ export enum EVENTS {
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
   EL_USER_INFORMATION = "EL_USER_INFORMATION",
-  EL_PLAY_PARTICIPANTS = "EL_PLAY_PARTICIPANTS",
   EL_LOGIN_USER = "EL_LOGIN_USER",
   EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
   EL_SHOW_TOAST = "EL_SHOW_TOAST",
@@ -18,10 +17,10 @@ export interface UserCurrency {
   currency: Currency;
 }
 
-export type User = {
+export type UserInformation = {
   id: number;
-  nickname: string;
-  avatar: string;
+  nickname?: string;
+  avatar?: string;
   accessToken: string;
 };
 
@@ -35,21 +34,25 @@ export enum Currency {
   GOLD = "gold",
 }
 
-export type DataEvent = UserBalance | UserCurrency | Notification;
+export type RequestDataEvent =
+  | UserBalance
+  | UserCurrency
+  | Notification
+  | UserInformation;
 
-interface GetUserInformationEvent {
+export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;
   event_id: EVENTS.EL_USER_INFORMATION;
-  data: User;
+  data: UserInformation;
 }
 
-interface GetUserCurrencyEvent {
+export interface GetUserCurrencyEvent {
   type: EVENTS.EL_GET_USER_CURRENCY;
   event_id: EVENTS.EL_GET_USER_CURRENCY;
   data: UserCurrency;
 }
 
-interface GetUserBalanceEvent {
+export interface GetUserBalanceEvent {
   type: EVENTS.EL_USER_BALANCE;
   event_id: EVENTS.EL_USER_BALANCE;
   data: UserBalance;
