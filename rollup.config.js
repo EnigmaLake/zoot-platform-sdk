@@ -41,6 +41,12 @@ export default [
         sourcemap: true
       },
     ],
+
+    external: [
+      ...Object.keys(pkg.devDependencies || {}),
+      ...Object.keys(pkg.dependencies || {}),
+      'axios',
+    ]
   }),
   CSSBundle({
     plugins: [

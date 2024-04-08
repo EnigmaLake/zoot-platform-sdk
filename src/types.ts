@@ -6,6 +6,8 @@ export enum EVENTS {
   EL_LOGIN_USER = "EL_LOGIN_USER",
   EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
   EL_SHOW_TOAST = "EL_SHOW_TOAST",
+  EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
+  EL_GET_EXPANDED_GAME_VIEW = "EL_GET_EXPANDED_GAME_VIEW",
 }
 
 export interface UserBalance {
@@ -15,6 +17,10 @@ export interface UserBalance {
 
 export interface UserCurrency {
   currency: Currency;
+}
+
+export interface GameExpandedView {
+  expanded: boolean;
 }
 
 export type UserInformation = {
@@ -38,7 +44,8 @@ export type RequestDataEvent =
   | UserBalance
   | UserCurrency
   | Notification
-  | UserInformation;
+  | UserInformation
+  | GameExpandedView;
 
 export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;
@@ -58,7 +65,13 @@ export interface GetUserBalanceEvent {
   data: UserBalance;
 }
 
+export interface GetGameExpandedView {
+  type: EVENTS.EL_GET_EXPANDED_GAME_VIEW;
+  event_id: EVENTS.EL_GET_EXPANDED_GAME_VIEW;
+  data: GameExpandedView;
+}
 export type ZootEvent =
   | GetUserBalanceEvent
   | GetUserCurrencyEvent
-  | GetUserInformationEvent;
+  | GetUserInformationEvent
+  | GameExpandedView;
