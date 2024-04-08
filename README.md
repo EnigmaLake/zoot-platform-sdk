@@ -1,11 +1,12 @@
 # Enigma Lake Zoot - Game Integration SDK
-The Enigma Lake Zoot Game Integration SDK is a TypeScript library designed to seamlessly integrate games into the Enigma Lake Zoot platform. This SDK provides developers with the necessary tools to enhance user experience by accessing user information such as username, session data, and avatar, as well as utilizing Enigma Lake Zoot's currency system.
+The Enigma Lake Zoot Game Integration SDK is a TypeScript library designed to seamlessly integrate games into the Enigma Lake Zoot platform. This SDK provides developers with the necessary tools to enhance the user experience by accessing user information such as nickname, session data, and avatar, expanding or collapsing the game view, as well as utilizing Enigma Lake Zoot's currency system.
 
 ## Features
-- **User Information**: Retrieve user data including username, session information, and avatar.
+- **User Information**: Retrieve user data including nickname, session information, and avatar.
 - **Currency Integration**: Utilize Enigma Lake Zoot's currency system within your game.
 - **Balance Query**: Check the user's current balance of Enigma Lake Zoot's currency.
 - **Currency Management**: Change the current currency being used within the game.
+- **Expand/Collapse game view**: Toggle the game view.
 - **Modal Triggers**: Trigger login or purchase modals to facilitate in-game transactions.
 
 ## Getting Started
@@ -28,7 +29,7 @@ or you can import specific types, events, and methods individually, such as:
 
 3. **Usage**: Utilize SDK methods to access user information and integrate Enigma Lake Zoot's features into your game.
 
-To establish communication with the Enigma Lake Zoot platform, it's essential to listen for ZootEvent messages. This can be achieved by registering an event listener like the following:
+To establish communication with the Enigma Lake Zoot platform, it is essential to listen to ZootEvent messages. This can be achieved by registering an event listener as follows:
 ```js
 window.addEventListener('message', (event: MessageEvent<ZootEvent>) => {
     if (event.data.event_id === EVENTS.EL_GET_USER_CURRENCY) {
@@ -43,6 +44,10 @@ window.addEventListener('message', (event: MessageEvent<ZootEvent>) => {
         // Handle ZootEvent for user information retrieval
         // Example: do something...
     }
+    if (event.data.event_id === EVENTS.EL_GET_EXPANDED_GAME_VIEW) {
+        // Handle ZootEvent for toggling game view
+        // Example: do something...
+    }
 });
 ```
 
@@ -51,17 +56,18 @@ To facilitate these events, you can easily trigger them by calling specific meth
 - To retrieve the user balance, utilize the method **```getUserBalanceEvent()```**.
 - For acquiring user currency information, use **```getUserCurrencyEvent()```**.
 - To change the user currency, use **```setUserCurrencyEvent(data: UserCurrency)```**.
-- If you require user information such as username, session, or avatar, call **```getUserInformationEvent()```**.
+- To toggle the game view, use **```toggleGameViewEvent(data: GameExpandedView)```**.
+- If you require user information such as nickname, session, or avatar, call **```getUserInformationEvent()```**.
 - To initiate the purchase flow for acquiring coins, utilize **```purchaseCoinsEvent()```**.
 - For triggering the login flow, use **```loginUserEvent()```**.
-- If you want to request all user data at once, simply invoke the function **```requestInitData()```**.
+- If you want to request all user data and the game view at once, simply invoke the function **```requestInitData()```**.
 - Alternatively, you can dispatch toast notification messages directly to the Enigma Lake Zoot client by invoking the method **```showNotificationEvent(message: Notification)```**.
 
 #### Data Types
 These data types define the events, user information, currency details, and notifications used within the Enigma Lake Zoot platform integration.
 
 ```js
-export enum EVENTS {
+enum EVENTS {
   EL_USER_BALANCE = "EL_USER_BALANCE",
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
@@ -69,59 +75,72 @@ export enum EVENTS {
   EL_LOGIN_USER = "EL_LOGIN_USER",
   EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
   EL_SHOW_TOAST = "EL_SHOW_TOAST",
+  EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
+  EL_GET_EXPANDED_GAME_VIEW = 'EL_GET_EXPANDED_GAME_VIEW',
 }
 
-export interface UserBalance {
+interface UserBalance {
   sweepsBalance: number;
   goldBalance: number;
 }
 
-export interface UserCurrency {
+interface UserCurrency {
   currency: Currency;
 }
 
-export type UserInformation = {
+interface GameExpandedView {
+    expanded: boolean;
+}
+
+type UserInformation = {
   id: number;
   nickname?: string;
   avatar?: string;
   accessToken: string;
 };
 
-export interface Notification {
+interface Notification {
   type: "success" | "error" | "info" | "custom";
   message: string;
 }
 
-export enum Currency {
+enum Currency {
   SWEEPS = "sweeps",
   GOLD = "gold",
 }
 
-export type RequestDataEvent = UserBalance | UserCurrency | Notification | UserInformation;
+type RequestDataEvent = UserBalance | UserCurrency | Notification | UserInformation | GameExpandedView ;
 
-export interface GetUserInformationEvent {
+interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;
   event_id: EVENTS.EL_USER_INFORMATION;
   data: UserInformation;
 }
 
-export interface GetUserCurrencyEvent {
+interface GetUserCurrencyEvent {
   type: EVENTS.EL_GET_USER_CURRENCY;
   event_id: EVENTS.EL_GET_USER_CURRENCY;
   data: UserCurrency;
 }
 
-export interface GetUserBalanceEvent {
+interface GetUserBalanceEvent {
   type: EVENTS.EL_USER_BALANCE;
   event_id: EVENTS.EL_USER_BALANCE;
   data: UserBalance;
 }
 
 
+export interface GetGameExpandedView {
+  type: EVENTS.EL_GET_EXPANDED_GAME_VIEW;
+  event_id: EVENTS.EL_GET_EXPANDED_GAME_VIEW;
+  data: GameExpandedView;
+}
 export type ZootEvent =
   | GetUserBalanceEvent
   | GetUserCurrencyEvent
-  | GetUserInformationEvent;
+  | GetUserInformationEvent
+  | GameExpandedView;
+
 
 ```
 

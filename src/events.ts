@@ -1,4 +1,10 @@
-import { RequestDataEvent, EVENTS, UserCurrency, Notification } from "./types";
+import {
+  RequestDataEvent,
+  EVENTS,
+  UserCurrency,
+  Notification,
+  GameExpandedView,
+} from "./types";
 
 export const sendEventResponse = async (
   event: EVENTS,
@@ -43,8 +49,17 @@ export const showNotificationEvent = async (message: Notification) => {
   await sendEventResponse(EVENTS.EL_SHOW_TOAST, message);
 };
 
+export const toggleGameViewEvent = async (data: GameExpandedView) => {
+  await sendEventResponse(EVENTS.EL_TOGGLE_EXPAND_GAME_VIEW, data);
+};
+
+export const getGameViewEvent = async () => {
+  await sendEventResponse(EVENTS.EL_GET_EXPANDED_GAME_VIEW);
+};
+
 export const requestInitData = async () => {
   await getUserBalanceEvent();
   await getUserCurrencyEvent();
   await getUserInformationEvent();
+  await getGameViewEvent();
 };
