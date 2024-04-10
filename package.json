@@ -1,7 +1,7 @@
 {
   "name": "@enigma-lake/zoot-game-integration-sdk",
-  "version": "1.0.6",
-  "description": "Client game integration SDK",
+  "version": "1.0.7",
+  "description": "Zoot Platform SDK",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",

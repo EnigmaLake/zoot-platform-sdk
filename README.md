@@ -1,5 +1,5 @@
-# Enigma Lake Zoot - Game Integration SDK
-The Enigma Lake Zoot Game Integration SDK is a TypeScript library designed to seamlessly integrate games into the Enigma Lake Zoot platform. This SDK provides developers with the necessary tools to enhance the user experience by accessing user information such as nickname, session data, and avatar, expanding or collapsing the game view, as well as utilizing Enigma Lake Zoot's currency system.
+# Zoot Platform SDK
+The Zoot Platform SDK is a TypeScript library designed to seamlessly integrate games into the Enigma Lake Zoot platform. This SDK provides developers with the necessary tools to enhance the user experience by accessing user information such as nickname, session data, and avatar, expanding or collapsing the game view, as well as utilizing Enigma Lake Zoot's currency system.
 
 ## Features
 - **User Information**: Retrieve user data including nickname, session information, and avatar.
@@ -11,7 +11,7 @@ The Enigma Lake Zoot Game Integration SDK is a TypeScript library designed to se
 
 ## Getting Started
 
-To start using the Enigma Lake Zoot Game Integration SDK, follow these steps:
+To start using the Zoot Platform SDK, follow these steps:
 
 1. **Installation**: Install the SDK via npm:
 ```bash 
