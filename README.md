@@ -89,7 +89,8 @@ interface UserCurrency {
 }
 
 interface GameExpandedView {
-    expanded: boolean;
+  expanded: boolean;
+  isMobileView: boolean;
 }
 
 type UserInformation = {
