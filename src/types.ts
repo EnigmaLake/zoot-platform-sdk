@@ -21,6 +21,7 @@ export interface UserCurrency {
 
 export interface GameExpandedView {
   expanded: boolean;
+  isMobileView: boolean;
 }
 
 export type UserInformation = {
