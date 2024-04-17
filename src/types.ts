@@ -1,5 +1,6 @@
 export enum EVENTS {
   EL_USER_BALANCE = "EL_USER_BALANCE",
+  EL_GET_GAME_ROUND_UUID = "EL_GET_GAME_ROUND_UUID",
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
   EL_USER_INFORMATION = "EL_USER_INFORMATION",
@@ -17,6 +18,10 @@ export interface UserBalance {
 
 export interface UserCurrency {
   currency: Currency;
+}
+
+export interface GameRoundUuid {
+  gameRoundUuid: string;
 }
 
 export interface GameExpandedView {
@@ -44,6 +49,7 @@ export enum Currency {
 export type RequestDataEvent =
   | UserBalance
   | UserCurrency
+  | GameRoundUuid
   | Notification
   | UserInformation
   | GameExpandedView;

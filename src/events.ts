@@ -29,6 +29,11 @@ export const getUserBalanceEvent = async () => {
 export const getUserCurrencyEvent = async () => {
   await sendEventResponse(EVENTS.EL_GET_USER_CURRENCY);
 };
+
+export const getGameRoundUuidEvent = async () => {
+  await sendEventResponse(EVENTS.EL_GET_GAME_ROUND_UUID);
+};
+
 export const sendSetUserCurrencyEvent = async (data: UserCurrency) => {
   await sendEventResponse(EVENTS.EL_SET_USER_CURRENCY, data);
 };
@@ -60,6 +65,7 @@ export const getGameViewEvent = async () => {
 export const requestInitData = async () => {
   await getUserBalanceEvent();
   await getUserCurrencyEvent();
+  await getGameRoundUuidEvent();
   await getUserInformationEvent();
   await getGameViewEvent();
 };
