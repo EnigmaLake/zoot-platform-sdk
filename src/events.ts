@@ -3,7 +3,8 @@ import {
   EVENTS,
   UserCurrency,
   Notification,
-  GameExpandedView, GameRoundUuid,
+  GameExpandedView,
+  GameRoundUuid,
 } from "./types";
 
 export const sendEventResponse = async (
