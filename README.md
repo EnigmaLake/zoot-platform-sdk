@@ -7,6 +7,7 @@ The Zoot Platform SDK is a TypeScript library designed to seamlessly integrate g
 - **Balance Query**: Check the user's current balance of Enigma Lake Zoot's currency.
 - **Currency Management**: Change the current currency being used within the game.
 - **Expand/Collapse game view**: Toggle the game view.
+- **Notify about the play outcome**: Trigger a toast about the play outcome
 - **Modal Triggers**: Trigger login or purchase modals to facilitate in-game transactions.
 
 ## Getting Started
@@ -15,16 +16,16 @@ To start using the Zoot Platform SDK, follow these steps:
 
 1. **Installation**: Install the SDK via npm:
 ```bash 
-npm install @enigma-lake/zoot-game-integration-sdk
+npm install @enigma-lake/zoot-platform-sdk
 ```
 
 2. **Integration**: You can import the entire package using the syntax 
 ``` js
-import * as zootSDK from '@enigma-lake/zoot-game-integration-sdk';
+import * as zootSDK from '@enigma-lake/zoot-platform-sdk';
 ```
 or you can import specific types, events, and methods individually, such as: 
 ``` js
- import { Currency } from '@enigma-lake/zoot-game-integration-sdk';
+ import { Currency } from '@enigma-lake/zoot-platform-sdk';
 ```
 
 3. **Usage**: Utilize SDK methods to access user information and integrate Enigma Lake Zoot's features into your game.
@@ -60,6 +61,7 @@ To facilitate these events, you can easily trigger them by calling specific meth
 - If you require user information such as nickname, session, or avatar, call **```getUserInformationEvent()```**.
 - To initiate the purchase flow for acquiring coins, utilize **```purchaseCoinsEvent()```**.
 - For triggering the login flow, use **```loginUserEvent()```**.
+- To notify the platform about the play outcome, use  **```notifyWithPlayOutcome(payload: PlayOutcomePayload)```**.
 - If you want to request all user data and the game view at once, simply invoke the function **```requestInitData()```**.
 - Alternatively, you can dispatch toast notification messages directly to the Enigma Lake Zoot client by invoking the method **```showNotificationEvent(message: Notification)```**.
 
@@ -77,6 +79,7 @@ enum EVENTS {
   EL_SHOW_TOAST = "EL_SHOW_TOAST",
   EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
   EL_GET_EXPANDED_GAME_VIEW = 'EL_GET_EXPANDED_GAME_VIEW',
+  EL_SHOW_PLAY_OUTCOME = 'EL_SHOW_PLAY_OUTCOME',
 }
 
 interface UserBalance {
@@ -99,6 +102,12 @@ type UserInformation = {
   avatar?: string;
   accessToken: string;
 };
+
+interface PlayOutcomePayload {
+  winMultiplier: number;
+  playAmount: number;
+  currency: Currency;
+}
 
 interface Notification {
   type: "success" | "error" | "info" | "custom";
@@ -140,7 +149,7 @@ export type ZootEvent =
   | GetUserBalanceEvent
   | GetUserCurrencyEvent
   | GetUserInformationEvent
-  | GameExpandedView;
+  | GetGameExpandedView;
 
 
 ```
@@ -148,5 +157,5 @@ export type ZootEvent =
 #### Currency Information
 Enigma Lake Zoot supports two currencies: **sweeps** and **gold**. You can visually represent these coins using the CSS classes **```sweeps_icon```** for sweeps and **```gold_icon```** for gold after importing the CSS file into your root file:
 ```js
-import '@enigma-lake/zoot-game-integration-sdk/dist/bundle.css';
+import '@enigma-lake/zoot-platform-sdk/dist/bundle.css';
 ```
