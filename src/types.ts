@@ -9,6 +9,7 @@ export enum EVENTS {
   EL_SHOW_TOAST = "EL_SHOW_TOAST",
   EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
   EL_GET_EXPANDED_GAME_VIEW = "EL_GET_EXPANDED_GAME_VIEW",
+  EL_SHOW_PLAY_OUTCOME = "EL_SHOW_PLAY_OUTCOME",
 }
 
 export interface UserBalance {
@@ -46,6 +47,12 @@ export enum Currency {
   GOLD = "gold",
 }
 
+export interface PlayOutcomePayload {
+  winMultiplier: number;
+  playAmount: number;
+  currency: Currency;
+}
+
 export type RequestDataEvent =
   | UserBalance
   | UserCurrency
@@ -81,4 +88,4 @@ export type ZootEvent =
   | GetUserBalanceEvent
   | GetUserCurrencyEvent
   | GetUserInformationEvent
-  | GameExpandedView;
+  | GetGameExpandedView;

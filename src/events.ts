@@ -5,6 +5,7 @@ import {
   Notification,
   GameExpandedView,
   GameRoundUuid,
+  PlayOutcomePayload,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -49,6 +50,10 @@ export const loginUserEvent = async () => {
 
 export const purchaseCoinsEvent = async () => {
   await sendEventResponse(EVENTS.EL_PURCHASE_COINS);
+};
+
+export const notifyWithPlayOutcome = async (payload: PlayOutcomePayload) => {
+  await sendEventResponse(EVENTS.EL_SHOW_PLAY_OUTCOME, payload);
 };
 
 export const showNotificationEvent = async (message: Notification) => {
