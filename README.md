@@ -7,6 +7,7 @@ The Zoot Platform SDK is a TypeScript library designed to seamlessly integrate g
 - **Balance Query**: Check the user's current balance of Enigma Lake Zoot's currency.
 - **Currency Management**: Change the current currency being used within the game.
 - **Expand/Collapse game view**: Toggle the game view.
+- **Play limits**: Fetch the play limits associated with each currency
 - **Notify about the play outcome**: Trigger a toast about the play outcome
 - **Modal Triggers**: Trigger login or purchase modals to facilitate in-game transactions.
 
@@ -49,6 +50,10 @@ window.addEventListener('message', (event: MessageEvent<ZootEvent>) => {
         // Handle ZootEvent for toggling game view
         // Example: do something...
     }
+     if (event.data.event_id === EVENTS.EL_SET_PLAY_LIMITS) {
+        // Handle ZootEvent for fetching the play limits
+        // Example: do something...
+    }
 });
 ```
 
@@ -57,6 +62,7 @@ To facilitate these events, you can easily trigger them by calling specific meth
 - To retrieve the user balance, utilize the method **```getUserBalanceEvent()```**.
 - For acquiring user currency information, use **```getUserCurrencyEvent()```**.
 - To change the user currency, use **```setUserCurrencyEvent(data: UserCurrency)```**.
+- To get the play limits associated with each currency, use **```getPlayLimitsEvent()```**.
 - To toggle the game view, use **```toggleGameViewEvent(data: GameExpandedView)```**.
 - If you require user information such as nickname, session, or avatar, call **```getUserInformationEvent()```**.
 - To initiate the purchase flow for acquiring coins, utilize **```purchaseCoinsEvent()```**.
@@ -80,6 +86,8 @@ enum EVENTS {
   EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
   EL_GET_EXPANDED_GAME_VIEW = 'EL_GET_EXPANDED_GAME_VIEW',
   EL_SHOW_PLAY_OUTCOME = 'EL_SHOW_PLAY_OUTCOME',
+  EL_GET_PLAY_LIMITS = "EL_GET_PLAY_LIMITS",
+  EL_SET_PLAY_LIMITS = "EL_SET_PLAY_LIMITS",
 }
 
 interface UserBalance {
@@ -107,6 +115,23 @@ interface PlayOutcomePayload {
   winMultiplier: number;
   playAmount: number;
   currency: Currency;
+}
+
+interface PlayLimits {
+  [Currency.SWEEPS]: {
+    playLimits: {
+      min: number;
+      max: number;
+    };
+    defaultValues: number[];
+  };
+  [Currency.GOLD]: {
+    playLimits: {
+      min: number;
+      max: number;
+    };
+    defaultValues: number[];
+  };
 }
 
 interface Notification {
@@ -145,13 +170,19 @@ export interface GetGameExpandedView {
   event_id: EVENTS.EL_GET_EXPANDED_GAME_VIEW;
   data: GameExpandedView;
 }
+
+export interface GetPlayLimitsEvents {
+  type: EVENTS.EL_SET_PLAY_LIMITS;
+  event_id: EVENTS.EL_SET_PLAY_LIMITS;
+  data: PlayLimits;
+}
+
 export type ZootEvent =
   | GetUserBalanceEvent
   | GetUserCurrencyEvent
   | GetUserInformationEvent
-  | GetGameExpandedView;
-
-
+  | GetGameExpandedView
+  | GetPlayLimitsEvents;
 ```
 
 #### Currency Information
