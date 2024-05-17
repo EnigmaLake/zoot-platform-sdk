@@ -69,7 +69,7 @@ export const getGameViewEvent = async () => {
 };
 
 export const getPlayLimitsEvent = async () => {
-  await sendEventResponse(EVENTS.EL_SET_PLAY_LIMITS);
+  await sendEventResponse(EVENTS.EL_GET_PLAY_LIMITS);
 };
 
 export const requestInitData = async () => {
