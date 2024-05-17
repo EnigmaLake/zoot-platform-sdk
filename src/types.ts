@@ -10,6 +10,8 @@ export enum EVENTS {
   EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
   EL_GET_EXPANDED_GAME_VIEW = "EL_GET_EXPANDED_GAME_VIEW",
   EL_SHOW_PLAY_OUTCOME = "EL_SHOW_PLAY_OUTCOME",
+  EL_GET_PLAY_LIMITS = "EL_GET_PLAY_LIMITS",
+  EL_SET_PLAY_LIMITS = "EL_SET_PLAY_LIMITS",
 }
 
 export interface UserBalance {
@@ -28,6 +30,23 @@ export interface GameRoundUuid {
 export interface GameExpandedView {
   expanded: boolean;
   isMobileView: boolean;
+}
+
+export interface PlayLimits {
+  [Currency.SWEEPS]: {
+    playLimits: {
+      min: number;
+      max: number;
+    };
+    defaultValues: number[];
+  };
+  [Currency.GOLD]: {
+    playLimits: {
+      min: number;
+      max: number;
+    };
+    defaultValues: number[];
+  };
 }
 
 export type UserInformation = {
@@ -84,8 +103,16 @@ export interface GetGameExpandedView {
   event_id: EVENTS.EL_GET_EXPANDED_GAME_VIEW;
   data: GameExpandedView;
 }
+
+export interface GetPlayLimitsEvents {
+  type: EVENTS.EL_SET_PLAY_LIMITS;
+  event_id: EVENTS.EL_SET_PLAY_LIMITS;
+  data: PlayLimits;
+}
+
 export type ZootEvent =
   | GetUserBalanceEvent
   | GetUserCurrencyEvent
   | GetUserInformationEvent
-  | GetGameExpandedView;
+  | GetGameExpandedView
+  | GetPlayLimitsEvents;
