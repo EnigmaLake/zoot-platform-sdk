@@ -119,14 +119,14 @@ interface PlayOutcomePayload {
 
 interface PlayLimits {
   [Currency.SWEEPS]: {
-    playLimits: {
+    limits: {
       min: number;
       max: number;
     };
     defaultValues: number[];
   };
   [Currency.GOLD]: {
-    playLimits: {
+    limits: {
       min: number;
       max: number;
     };
