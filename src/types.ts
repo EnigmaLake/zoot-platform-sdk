@@ -3,7 +3,7 @@ export enum EVENTS {
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
   EL_SET_GAME_ROUND_UUID = "EL_SET_GAME_ROUND_UUID",
-  EL_SET_GAME_STATE = "EL_SET_GAME_STATE",
+  EL_SET_GAME_ROUND_STATE = "EL_SET_GAME_ROUND_STATE",
   EL_USER_INFORMATION = "EL_USER_INFORMATION",
   EL_LOGIN_USER = "EL_LOGIN_USER",
   EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
@@ -28,8 +28,15 @@ export interface GameRoundUuid {
   gameRoundUuid: string;
 }
 
-export interface GameState {
-  state: string;
+export enum GameRoundStates {
+  EMPTY = "EMPTY",
+  PREPARED = "PREPARED",
+  LIVE = "LIVE",
+  COMPLETED = "COMPLETED",
+}
+
+export interface GameRoundState {
+  state: GameRoundStates;
 }
 
 export interface GameExpandedView {
@@ -81,7 +88,7 @@ export type RequestDataEvent =
   | UserBalance
   | UserCurrency
   | GameRoundUuid
-  | GameState
+  | GameRoundState
   | Notification
   | UserInformation
   | GameExpandedView;
