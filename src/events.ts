@@ -6,7 +6,7 @@ import {
   GameExpandedView,
   GameRoundUuid,
   PlayOutcomePayload,
-  GameState,
+  GameRoundState,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -41,8 +41,8 @@ export const sendSetGameRoundUuidEvent = async (data: GameRoundUuid) => {
   await sendEventResponse(EVENTS.EL_SET_GAME_ROUND_UUID, data);
 };
 
-export const sendSetGameStateEvent = async (data: GameState) => {
-  await sendEventResponse(EVENTS.EL_SET_GAME_STATE, data);
+export const sendSetGameRoundStateEvent = async (data: GameRoundState) => {
+  await sendEventResponse(EVENTS.EL_SET_GAME_ROUND_STATE, data);
 };
 
 export const getUserInformationEvent = async () => {
