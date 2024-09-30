@@ -37,8 +37,9 @@ export enum GameRoundStates {
 }
 
 export interface GameRoundVideoUrl {
-  videoUrl: string;
-  wonAmount?: string;
+  videoUrl?: string;
+  betAmount?: number;
+  winAmount?: number;
   winMultiplier?: string;
 }
 
