@@ -37,6 +37,10 @@ export enum GameRoundStates {
   COMPLETED = "COMPLETED",
 }
 
+export interface GameRoundVideoUrl {
+  videoUrl: string;
+}
+
 export interface GameRoundState {
   state: GameRoundStates;
 }
@@ -93,7 +97,8 @@ export type RequestDataEvent =
   | GameRoundState
   | Notification
   | UserInformation
-  | GameExpandedView;
+  | GameExpandedView
+  | GameRoundVideoUrl;
 
 export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;

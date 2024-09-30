@@ -7,6 +7,7 @@ import {
   GameRoundUuid,
   PlayOutcomePayload,
   GameRoundState,
+  GameRoundVideoUrl,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -33,10 +34,6 @@ export const getUserCurrencyEvent = async () => {
   await sendEventResponse(EVENTS.EL_GET_USER_CURRENCY);
 };
 
-export const getGameRoundVideoUrlEvent = async () => {
-  await sendEventResponse(EVENTS.EL_GET_GAME_ROUND_VIDEO_URL);
-};
-
 export const sendSetUserCurrencyEvent = async (data: UserCurrency) => {
   await sendEventResponse(EVENTS.EL_SET_USER_CURRENCY, data);
 };
@@ -49,7 +46,9 @@ export const sendSetGameRoundStateEvent = async (data: GameRoundState) => {
   await sendEventResponse(EVENTS.EL_SET_GAME_ROUND_STATE, data);
 };
 
-export const sendSetGameRoundVideoUrlEvent = async (data: GameRoundState) => {
+export const sendSetGameRoundVideoUrlEvent = async (
+  data: GameRoundVideoUrl
+) => {
   await sendEventResponse(EVENTS.EL_SET_GAME_ROUND_VIDEO_URL, data);
 };
 
