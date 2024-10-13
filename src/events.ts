@@ -8,7 +8,6 @@ import {
   PlayOutcomePayload,
   GameRoundState,
   GameRoundVideoUrl,
-  GameRoundPostRecordProcessing,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -45,12 +44,6 @@ export const sendSetGameRoundUuidEvent = async (data: GameRoundUuid) => {
 
 export const sendSetGameRoundStateEvent = async (data: GameRoundState) => {
   await sendEventResponse(EVENTS.EL_SET_GAME_ROUND_STATE, data);
-};
-
-export const sendSetPostRecordProcessing = async (
-  data: GameRoundPostRecordProcessing
-) => {
-  await sendEventResponse(EVENTS.EL_SET_IS_POST_RECORD_PROCESSING, data);
 };
 
 export const sendSetGameRoundVideoUrlEvent = async (
