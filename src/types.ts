@@ -4,6 +4,7 @@ export enum EVENTS {
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
   EL_SET_GAME_ROUND_UUID = "EL_SET_GAME_ROUND_UUID",
   EL_SET_GAME_ROUND_STATE = "EL_SET_GAME_ROUND_STATE",
+  EL_SET_IS_POST_RECORD_PROCESSING = "EL_SET_IS_POST_RECORD_PROCESSING",
   EL_SET_GAME_ROUND_VIDEO_URL = "EL_SET_GAME_ROUND_VIDEO_URL",
   EL_USER_INFORMATION = "EL_USER_INFORMATION",
   EL_LOGIN_USER = "EL_LOGIN_USER",
@@ -34,6 +35,10 @@ export enum GameRoundStates {
   PREPARED = "PREPARED",
   LIVE = "LIVE",
   COMPLETED = "COMPLETED",
+}
+
+export interface GameRoundPostRecordProcessing {
+  isPostRecordProcessing: boolean;
 }
 
 export interface GameRoundVideoUrl {
@@ -100,6 +105,7 @@ export type RequestDataEvent =
   | Notification
   | UserInformation
   | GameExpandedView
+  | GameRoundPostRecordProcessing
   | GameRoundVideoUrl;
 
 export interface GetUserInformationEvent {
