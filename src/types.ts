@@ -46,6 +46,7 @@ export interface GameRoundVideoUrl {
   betAmount?: number;
   winAmount?: number;
   winMultiplier?: string;
+  isPostRecordProcessing?: boolean;
 }
 
 export interface GameRoundState {
