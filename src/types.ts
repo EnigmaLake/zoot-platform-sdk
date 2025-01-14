@@ -68,6 +68,13 @@ export interface PlayLimits {
     };
     defaultValues: number[];
   };
+  [Currency.TONCOIN]: {
+    limits: {
+      min: number;
+      max: number;
+    };
+    defaultValues: number[];
+  };
 }
 
 export type UserInformation = {
@@ -85,6 +92,7 @@ export interface Notification {
 export enum Currency {
   SWEEPS = "sweeps",
   GOLD = "gold",
+  TONCOIN = "toncoin",
 }
 
 export interface PlayOutcomePayload {
