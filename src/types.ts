@@ -14,6 +14,8 @@ export enum EVENTS {
   EL_SHOW_PLAY_OUTCOME = "EL_SHOW_PLAY_OUTCOME",
   EL_GET_PLAY_LIMITS = "EL_GET_PLAY_LIMITS",
   EL_SET_PLAY_LIMITS = "EL_SET_PLAY_LIMITS",
+  EL_SET_PLINKO_BALLS_ARE_DROPPING = "EL_SET_PLINKO_BALLS_ARE_DROPPING",
+  EL_SET_ALL_PLINKO_BALLS_DROPPED = "EL_SET_ALL_PLINKO_BALLS_DROPPED",
 }
 
 export interface UserBalance {
@@ -51,6 +53,10 @@ export interface GameRoundState {
 export interface GameExpandedView {
   expanded: boolean;
   isMobileView: boolean;
+}
+
+export interface PlinkoBallsDroppingStatus {
+  status: boolean
 }
 
 export interface PlayLimits {
@@ -109,7 +115,8 @@ export type RequestDataEvent =
   | Notification
   | UserInformation
   | GameExpandedView
-  | GameRoundVideoUrl;
+  | GameRoundVideoUrl
+  | PlinkoBallsDroppingStatus;
 
 export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;

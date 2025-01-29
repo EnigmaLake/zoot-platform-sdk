@@ -34,6 +34,14 @@ export const getUserCurrencyEvent = async () => {
   await sendEventResponse(EVENTS.EL_GET_USER_CURRENCY);
 };
 
+export const sendSetPlinkoBallsAreDroppingEvent = async ({ status }: { status: boolean }) => {
+  await sendEventResponse(EVENTS.EL_SET_PLINKO_BALLS_ARE_DROPPING, { status });
+};
+
+export const sendSetAllPlinkoBallsDroppedEvent = async ({ status }: { status: boolean }) => {
+  await sendEventResponse(EVENTS.EL_SET_ALL_PLINKO_BALLS_DROPPED, { status });
+};
+
 export const sendSetUserCurrencyEvent = async (data: UserCurrency) => {
   await sendEventResponse(EVENTS.EL_SET_USER_CURRENCY, data);
 };
