@@ -74,6 +74,13 @@ export interface PlayLimits {
     };
     defaultValues: number[];
   };
+  [Currency.STARS]: {
+    limits: {
+      min: number;
+      max: number;
+    };
+    defaultValues: number[];
+  };
 }
 
 export type UserInformation = {
@@ -91,6 +98,7 @@ export interface Notification {
 export enum Currency {
   SWEEPS = "sweeps",
   GOLD = "gold",
+  STARS = "stars",
 }
 
 export interface PlayOutcomePayload {
