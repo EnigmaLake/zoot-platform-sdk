@@ -21,6 +21,7 @@ export enum EVENTS {
 export interface UserBalance {
   sweepsBalance: number;
   goldBalance: number;
+  starsBalance: number;
 }
 
 export interface UserCurrency {
