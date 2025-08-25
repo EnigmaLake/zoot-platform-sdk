@@ -1,7 +1,7 @@
 {
   "name": "@enigma-lake/zoot-platform-sdk",
-  "version": "1.0.23",
-  "description": "Zoot Platform SDK",
+  "version": "1.1.0",
+  "description": "ZOOT Platform SDK",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",

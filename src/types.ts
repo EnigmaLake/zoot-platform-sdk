@@ -57,7 +57,7 @@ export interface GameExpandedView {
 }
 
 export interface PlinkoBallsDroppingStatus {
-  status: boolean
+  status: boolean;
 }
 
 export interface PlayLimits {
@@ -89,6 +89,9 @@ export type UserInformation = {
   nickname?: string;
   avatar?: string;
   accessToken: string;
+  tenantId: number;
+  operatorId: number;
+  currency: string;
 };
 
 export interface Notification {

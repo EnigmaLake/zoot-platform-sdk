@@ -110,6 +110,9 @@ type UserInformation = {
   nickname?: string;
   avatar?: string;
   accessToken: string;
+  tenantId: string;
+  operatorId: string;
+  currency: string;
 };
 
 interface PlayOutcomePayload {
