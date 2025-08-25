@@ -89,9 +89,9 @@ export type UserInformation = {
   nickname?: string;
   avatar?: string;
   accessToken: string;
-  tenantId: number;
-  operatorId: number;
-  currency: string;
+  tenantId?: number;
+  operatorId?: number;
+  currency?: string;
 };
 
 export interface Notification {
