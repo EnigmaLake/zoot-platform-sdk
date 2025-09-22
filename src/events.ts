@@ -22,7 +22,7 @@ export const sendEventResponse = async (
         data,
       })
     );
-    window.top?.postMessage(message, "*");
+    window.parent?.postMessage(message, "*");
   }
 };
 
