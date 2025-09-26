@@ -8,6 +8,7 @@ import {
   PlayOutcomePayload,
   GameRoundState,
   GameRoundVideoUrl,
+  UserCurrencyV2,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -30,8 +31,16 @@ export const getUserBalanceEvent = async () => {
   await sendEventResponse(EVENTS.EL_USER_BALANCE);
 };
 
+export const getUserBalanceEventV2 = async () => {
+  await sendEventResponse(EVENTS.EL_USER_BALANCE_V2);
+};
+
 export const getUserCurrencyEvent = async () => {
   await sendEventResponse(EVENTS.EL_GET_USER_CURRENCY);
+};
+
+export const getUserCurrencyEventV2 = async () => {
+  await sendEventResponse(EVENTS.EL_GET_USER_CURRENCY_V2);
 };
 
 export const sendSetPlinkoBallsAreDroppingEvent = async ({
@@ -52,6 +61,10 @@ export const sendSetAllPlinkoBallsDroppedEvent = async ({
 
 export const sendSetUserCurrencyEvent = async (data: UserCurrency) => {
   await sendEventResponse(EVENTS.EL_SET_USER_CURRENCY, data);
+};
+
+export const sendSetUserCurrencyEventV2 = async (data: UserCurrencyV2) => {
+  await sendEventResponse(EVENTS.EL_SET_USER_CURRENCY_V2, data);
 };
 
 export const sendSetGameRoundUuidEvent = async (data: GameRoundUuid) => {
@@ -80,6 +93,10 @@ export const purchaseCoinsEvent = async () => {
   await sendEventResponse(EVENTS.EL_PURCHASE_COINS);
 };
 
+export const sendOpenStoreEvent = async () => {
+  await sendEventResponse(EVENTS.EL_OPEN_STORE);
+};
+
 export const notifyWithPlayOutcome = async (payload: PlayOutcomePayload) => {
   await sendEventResponse(EVENTS.EL_SHOW_PLAY_OUTCOME, payload);
 };
@@ -100,10 +117,21 @@ export const getPlayLimitsEvent = async () => {
   await sendEventResponse(EVENTS.EL_GET_PLAY_LIMITS);
 };
 
+export const getPlayLimitsEventV2 = async () => {
+  await sendEventResponse(EVENTS.EL_GET_PLAY_LIMITS_V2);
+};
+
+export const setToggleGameWidgets = async () => {
+  await sendEventResponse(EVENTS.EL_SET_TOGGLE_WIDGETS);
+};
+
 export const requestInitData = async () => {
   await getUserBalanceEvent();
+  await getUserBalanceEventV2();
   await getUserCurrencyEvent();
+  await getUserCurrencyEventV2();
   await getUserInformationEvent();
   await getGameViewEvent();
   await getPlayLimitsEvent();
+  await getPlayLimitsEventV2();
 };

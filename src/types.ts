@@ -1,19 +1,27 @@
 export enum EVENTS {
   EL_USER_BALANCE = "EL_USER_BALANCE",
+  EL_USER_BALANCE_V2 = "EL_USER_BALANCE_V2",
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
+  EL_GET_USER_CURRENCY_V2 = "EL_GET_USER_CURRENCY_V2",
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
+  EL_SET_USER_CURRENCY_V2 = "EL_SET_USER_CURRENCY_V2",
   EL_SET_GAME_ROUND_UUID = "EL_SET_GAME_ROUND_UUID",
   EL_SET_GAME_ROUND_STATE = "EL_SET_GAME_ROUND_STATE",
   EL_SET_GAME_ROUND_VIDEO_URL = "EL_SET_GAME_ROUND_VIDEO_URL",
   EL_USER_INFORMATION = "EL_USER_INFORMATION",
   EL_LOGIN_USER = "EL_LOGIN_USER",
   EL_PURCHASE_COINS = "EL_PURCHASE_COINS",
+  EL_OPEN_STORE = "EL_OPEN_STORE",
   EL_SHOW_TOAST = "EL_SHOW_TOAST",
   EL_TOGGLE_EXPAND_GAME_VIEW = "EL_TOGGLE_EXPAND_GAME_VIEW",
   EL_GET_EXPANDED_GAME_VIEW = "EL_GET_EXPANDED_GAME_VIEW",
   EL_SHOW_PLAY_OUTCOME = "EL_SHOW_PLAY_OUTCOME",
   EL_GET_PLAY_LIMITS = "EL_GET_PLAY_LIMITS",
+  EL_GET_PLAY_LIMITS_V2 = "EL_GET_PLAY_LIMITS_v2",
   EL_SET_PLAY_LIMITS = "EL_SET_PLAY_LIMITS",
+  EL_SET_PLAY_LIMITS_V2 = "EL_SET_PLAY_LIMITS_V2",
+  EL_SET_TOGGLE_WIDGETS = "EL_SET_TOGGLE_WIDGETS",
+  EL_GET_TOGGLE_WIDGETS = "EL_GET_TOGGLE_WIDGETS",
   EL_SET_PLINKO_BALLS_ARE_DROPPING = "EL_SET_PLINKO_BALLS_ARE_DROPPING",
   EL_SET_ALL_PLINKO_BALLS_DROPPED = "EL_SET_ALL_PLINKO_BALLS_DROPPED",
 }
@@ -23,8 +31,31 @@ export interface UserBalance {
   goldBalance: number;
 }
 
+export type UserBalanceV2 = Record<Currency, number>;
+
 export interface UserCurrency {
   currency: Currency;
+}
+
+export type CurrencyProps = {
+  current: CurrencyMeta;
+  available: CurrencyMeta[];
+};
+
+export type CurrencyIcon = React.ComponentType<{ className?: string }>;
+
+export type CurrencyMeta = {
+  code: Currency;
+  label: string;
+  abbr: string;
+  icon?: CurrencyIcon;
+  decimals: number;
+  possibleWin?: number;
+};
+
+export interface UserCurrencyV2 {
+  current: CurrencyMeta;
+  available: CurrencyMeta[];
 }
 
 export interface GameRoundUuid {
@@ -59,22 +90,27 @@ export interface PlinkoBallsDroppingStatus {
   status: boolean;
 }
 
-export interface PlayLimits {
-  [Currency.SWEEPS]: {
-    limits: {
-      min: number;
-      max: number;
-    };
-    defaultValues: number[];
+export interface PlayLimitConfig {
+  limits: {
+    min: number;
+    max: number;
   };
-  [Currency.GOLD]: {
-    limits: {
-      min: number;
-      max: number;
-    };
-    defaultValues: number[];
-  };
+  defaultValues: number[];
 }
+
+export type PlayLimits = Record<Currency, PlayLimitConfig>;
+
+export interface PlayLimitConfigV2 {
+  limits: {
+    min: number;
+    max: number;
+    default: number;
+  };
+  maxExposure?: number;
+  defaultBetOptions: number[];
+}
+
+export type PlayLimitsV2 = Record<Currency, PlayLimitConfigV2>;
 
 export type UserInformation = {
   id: number;
@@ -104,13 +140,17 @@ export interface PlayOutcomePayload {
 
 export type RequestDataEvent =
   | UserBalance
+  | UserBalanceV2
   | UserCurrency
+  | UserCurrencyV2
   | GameRoundUuid
   | GameRoundState
   | Notification
   | UserInformation
   | GameExpandedView
   | GameRoundVideoUrl
+  | PlayLimits
+  | PlayLimitsV2
   | PlinkoBallsDroppingStatus;
 
 export interface GetUserInformationEvent {
@@ -124,11 +164,21 @@ export interface GetUserCurrencyEvent {
   event_id: EVENTS.EL_GET_USER_CURRENCY;
   data: UserCurrency;
 }
+export interface GetUserCurrencyEventV2 {
+  type: EVENTS.EL_GET_USER_CURRENCY_V2;
+  event_id: EVENTS.EL_GET_USER_CURRENCY_V2;
+  data: UserCurrencyV2;
+}
 
 export interface GetUserBalanceEvent {
   type: EVENTS.EL_USER_BALANCE;
   event_id: EVENTS.EL_USER_BALANCE;
   data: UserBalance;
+}
+export interface GetUserBalanceEventV2 {
+  type: EVENTS.EL_USER_BALANCE_V2;
+  event_id: EVENTS.EL_USER_BALANCE_V2;
+  data: UserBalanceV2;
 }
 
 export interface GetGameExpandedView {
@@ -143,9 +193,18 @@ export interface GetPlayLimitsEvents {
   data: PlayLimits;
 }
 
+export interface GetPlayLimitsEventsV2 {
+  type: EVENTS.EL_SET_PLAY_LIMITS_V2;
+  event_id: EVENTS.EL_SET_PLAY_LIMITS_V2;
+  data: PlayLimitsV2;
+}
+
 export type ZootEvent =
   | GetUserBalanceEvent
+  | GetUserBalanceEventV2
   | GetUserCurrencyEvent
+  | GetUserCurrencyEventV2
   | GetUserInformationEvent
   | GetGameExpandedView
-  | GetPlayLimitsEvents;
+  | GetPlayLimitsEvents
+  | GetPlayLimitsEventsV2;
