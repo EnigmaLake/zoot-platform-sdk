@@ -116,6 +116,7 @@ export type UserInformation = {
   id: number;
   nickname?: string;
   avatar?: string;
+  ignoreMetric?: boolean;
   accessToken: string;
   tenantId?: number;
   operatorId?: number;
