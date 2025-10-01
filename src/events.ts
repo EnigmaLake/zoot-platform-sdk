@@ -121,8 +121,12 @@ export const getPlayLimitsEventV2 = async () => {
   await sendEventResponse(EVENTS.EL_GET_PLAY_LIMITS_V2);
 };
 
-export const setToggleGameWidgets = async () => {
-  await sendEventResponse(EVENTS.EL_SET_TOGGLE_WIDGETS);
+export const setToggleGameWidgetsExpansion = async () => {
+  await sendEventResponse(EVENTS.EL_SET_TOGGLE_WIDGET_EXPANSION);
+};
+
+export const setToggleGameWidgetsVisibility = async () => {
+  await sendEventResponse(EVENTS.EL_SET_TOGGLE_WIDGET_VISIBILITY);
 };
 
 export const requestInitData = async () => {
