@@ -134,6 +134,7 @@ export interface Notification {
 export enum Currency {
   SWEEPS = "sweeps",
   GOLD = "gold",
+  EXTERNAL = "external",
 }
 
 export interface PlayOutcomePayload {
