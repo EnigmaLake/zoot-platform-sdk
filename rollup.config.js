@@ -1,7 +1,7 @@
 import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
 import typescript from "@rollup/plugin-typescript";
-import tsconfig from "./tsconfig.json" assert { type: "json" };
+import { readFileSync } from "fs";
 import terser from "@rollup/plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import summary from "rollup-plugin-summary";
@@ -9,7 +9,8 @@ import postcss from 'rollup-plugin-postcss'
 import svgr from '@svgr/rollup'
 import css from 'rollup-plugin-css-only';
 
-import pkg from "./package.json" assert { type: "json" };
+const tsconfig = JSON.parse(readFileSync("./tsconfig.json", "utf8"));
+const pkg = JSON.parse(readFileSync("./package.json", "utf8"));
 const name = pkg.main.replace(/\.js$/, "");
 
 const bundle = (config) => ({
