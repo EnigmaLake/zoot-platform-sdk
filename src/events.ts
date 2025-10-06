@@ -97,6 +97,10 @@ export const sendOpenStoreEvent = async () => {
   await sendEventResponse(EVENTS.EL_OPEN_STORE);
 };
 
+export const sendOpenHighPlayModalEvent = async () => {
+  await sendEventResponse(EVENTS.EL_OPEN_HIGH_PLAY_MODAL);
+};
+
 export const notifyWithPlayOutcome = async (payload: PlayOutcomePayload) => {
   await sendEventResponse(EVENTS.EL_SHOW_PLAY_OUTCOME, payload);
 };
