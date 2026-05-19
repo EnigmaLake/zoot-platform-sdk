@@ -29,6 +29,7 @@ export enum EVENTS {
   EL_SET_PLINKO_BALLS_ARE_DROPPING = "EL_SET_PLINKO_BALLS_ARE_DROPPING",
   EL_SET_ALL_PLINKO_BALLS_DROPPED = "EL_SET_ALL_PLINKO_BALLS_DROPPED",
   EL_SET_TOGGLE_INFO_SCREEN = "EL_SET_TOGGLE_INFO_SCREEN",
+  EL_SET_TOGGLE_PLAY_AMOUNT_VIEW = "EL_SET_TOGGLE_PLAY_AMOUNT_VIEW",
 }
 
 export interface UserBalance {
@@ -99,6 +100,10 @@ export interface InfoScreenState {
   isOpen: boolean;
 }
 
+export interface PlayAmountViewState {
+  isOpen: boolean;
+}
+
 export interface PlayLimitConfig {
   limits: {
     min: number;
@@ -162,7 +167,8 @@ export type RequestDataEvent =
   | PlayLimits
   | PlayLimitsV2
   | PlinkoBallsDroppingStatus
-  | InfoScreenState;
+  | InfoScreenState
+  | PlayAmountViewState;
 
 export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;

@@ -10,6 +10,7 @@ import {
   GameRoundVideoUrl,
   UserCurrencyV2,
   InfoScreenState,
+  PlayAmountViewState,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -136,6 +137,10 @@ export const setToggleGameWidgetsVisibility = async () => {
 
 export const setToggleInfoScreen = async (data: InfoScreenState) => {
   await sendEventResponse(EVENTS.EL_SET_TOGGLE_INFO_SCREEN, data);
+};
+
+export const setTogglePlayAmountView = async (data: PlayAmountViewState) => {
+  await sendEventResponse(EVENTS.EL_SET_TOGGLE_PLAY_AMOUNT_VIEW, data);
 };
 
 export const requestInitData = async () => {
