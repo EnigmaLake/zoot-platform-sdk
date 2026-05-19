@@ -9,6 +9,7 @@ import {
   GameRoundState,
   GameRoundVideoUrl,
   UserCurrencyV2,
+  InfoScreenState,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -131,6 +132,10 @@ export const setToggleGameWidgetsExpansion = async () => {
 
 export const setToggleGameWidgetsVisibility = async () => {
   await sendEventResponse(EVENTS.EL_SET_TOGGLE_WIDGET_VISIBILITY);
+};
+
+export const setToggleInfoScreen = async (data: InfoScreenState) => {
+  await sendEventResponse(EVENTS.EL_SET_TOGGLE_INFO_SCREEN, data);
 };
 
 export const requestInitData = async () => {

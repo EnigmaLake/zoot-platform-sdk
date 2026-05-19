@@ -28,6 +28,7 @@ export enum EVENTS {
   EL_GET_TOGGLE_WIDGET_VISIBILITY = "EL_GET_TOGGLE_WIDGET_VISIBILITY",
   EL_SET_PLINKO_BALLS_ARE_DROPPING = "EL_SET_PLINKO_BALLS_ARE_DROPPING",
   EL_SET_ALL_PLINKO_BALLS_DROPPED = "EL_SET_ALL_PLINKO_BALLS_DROPPED",
+  EL_SET_TOGGLE_INFO_SCREEN = "EL_SET_TOGGLE_INFO_SCREEN",
 }
 
 export interface UserBalance {
@@ -94,6 +95,10 @@ export interface PlinkoBallsDroppingStatus {
   status: boolean;
 }
 
+export interface InfoScreenState {
+  isOpen: boolean;
+}
+
 export interface PlayLimitConfig {
   limits: {
     min: number;
@@ -156,7 +161,8 @@ export type RequestDataEvent =
   | GameRoundVideoUrl
   | PlayLimits
   | PlayLimitsV2
-  | PlinkoBallsDroppingStatus;
+  | PlinkoBallsDroppingStatus
+  | InfoScreenState;
 
 export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;
