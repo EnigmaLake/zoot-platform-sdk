@@ -3,6 +3,8 @@ export enum EVENTS {
   EL_USER_BALANCE_V2 = "EL_USER_BALANCE_V2",
   EL_GET_USER_CURRENCY = "EL_GET_USER_CURRENCY",
   EL_GET_USER_CURRENCY_V2 = "EL_GET_USER_CURRENCY_V2",
+  EL_GET_USER_LANGUAGE = "EL_GET_USER_LANGUAGE",
+  EL_SET_USER_LANGUAGE = "EL_SET_USER_LANGUAGE",
   EL_SET_USER_CURRENCY = "EL_SET_USER_CURRENCY",
   EL_SET_USER_CURRENCY_V2 = "EL_SET_USER_CURRENCY_V2",
   EL_SET_GAME_ROUND_UUID = "EL_SET_GAME_ROUND_UUID",
@@ -62,6 +64,11 @@ export type CurrencyMeta = {
 export interface UserCurrencyV2 {
   current: CurrencyMeta;
   available: CurrencyMeta[];
+}
+
+export interface UserLanguage {
+  activeLanguageCode: string;
+  enabledLanguageCodes: string[];
 }
 
 export interface GameRoundUuid {
@@ -158,6 +165,7 @@ export type RequestDataEvent =
   | UserBalanceV2
   | UserCurrency
   | UserCurrencyV2
+  | UserLanguage
   | GameRoundUuid
   | GameRoundState
   | Notification
@@ -185,6 +193,18 @@ export interface GetUserCurrencyEventV2 {
   type: EVENTS.EL_GET_USER_CURRENCY_V2;
   event_id: EVENTS.EL_GET_USER_CURRENCY_V2;
   data: UserCurrencyV2;
+}
+
+export interface GetUserLanguageEvent {
+  type: EVENTS.EL_GET_USER_LANGUAGE;
+  event_id: EVENTS.EL_GET_USER_LANGUAGE;
+  data: UserLanguage;
+}
+
+export interface SetUserLanguageEvent {
+  type: EVENTS.EL_SET_USER_LANGUAGE;
+  event_id: EVENTS.EL_SET_USER_LANGUAGE;
+  data: UserLanguage;
 }
 
 export interface GetUserBalanceEvent {
@@ -221,6 +241,8 @@ export type ZootEvent =
   | GetUserBalanceEventV2
   | GetUserCurrencyEvent
   | GetUserCurrencyEventV2
+  | GetUserLanguageEvent
+  | SetUserLanguageEvent
   | GetUserInformationEvent
   | GetGameExpandedView
   | GetPlayLimitsEvents

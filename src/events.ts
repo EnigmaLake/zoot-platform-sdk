@@ -11,6 +11,7 @@ import {
   UserCurrencyV2,
   InfoScreenState,
   PlayAmountViewState,
+  UserLanguage,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -45,6 +46,10 @@ export const getUserCurrencyEventV2 = async () => {
   await sendEventResponse(EVENTS.EL_GET_USER_CURRENCY_V2);
 };
 
+export const getUserLanguageEvent = async () => {
+  await sendEventResponse(EVENTS.EL_GET_USER_LANGUAGE);
+};
+
 export const sendSetPlinkoBallsAreDroppingEvent = async ({
   status,
 }: {
@@ -67,6 +72,10 @@ export const sendSetUserCurrencyEvent = async (data: UserCurrency) => {
 
 export const sendSetUserCurrencyEventV2 = async (data: UserCurrencyV2) => {
   await sendEventResponse(EVENTS.EL_SET_USER_CURRENCY_V2, data);
+};
+
+export const sendSetUserLanguageEvent = async (data: UserLanguage) => {
+  await sendEventResponse(EVENTS.EL_SET_USER_LANGUAGE, data);
 };
 
 export const sendSetGameRoundUuidEvent = async (data: GameRoundUuid) => {
@@ -148,6 +157,7 @@ export const requestInitData = async () => {
   await getUserBalanceEventV2();
   await getUserCurrencyEvent();
   await getUserCurrencyEventV2();
+  await getUserLanguageEvent();
   await getUserInformationEvent();
   await getGameViewEvent();
   await getPlayLimitsEvent();
