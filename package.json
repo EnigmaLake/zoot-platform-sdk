@@ -1,6 +1,6 @@
 {
   "name": "@enigma-lake/zoot-platform-sdk",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "ZOOT Platform SDK",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -21,6 +21,7 @@
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-terser": "0.4.0",
     "@rollup/plugin-typescript": "11.0.0",
+    "@svgr/rollup": "8.1.0",
     "@tsconfig/node14": "^1.0.3",
     "@types/events": "^3.0.0",
     "@types/react": "18.2.21",
@@ -31,17 +32,17 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-promise": "^6.1.1",
+    "jest": "29.7.0",
+    "postcss": "^8.5.15",
     "prettier": "2.8.8",
     "rollup": "^3.19.1",
+    "rollup-plugin-css-only": "4.5.2",
     "rollup-plugin-dts": "^5.2.0",
     "rollup-plugin-esbuild": "^5.0.0",
+    "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-summary": "2.0.0",
     "rollup-plugin-svg": "2.0.0",
-    "rollup-plugin-css-only": "4.5.2",
-    "rollup-plugin-postcss": "4.0.2",
-    "@svgr/rollup": "8.1.0",
-    "typescript": "5.2.2",
-    "jest":"29.7.0"
+    "typescript": "5.2.2"
   },
   "types": "./dist/index.d.ts",
   "repository": {
