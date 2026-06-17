@@ -134,6 +134,14 @@ export type UserInformation = {
   tenantId?: number;
   operatorId?: number;
   currency?: string;
+  /**
+   * Active play-controller language configured for the user's
+   * tenant/operator, as a BCP-47 style code (e.g. "en", "zh-CN").
+   * Resolved by the host platform from the el-auth operator-language config
+   * and forwarded to embedded games so they can localize their UI. Games
+   * should fall back to "en" when this is absent.
+   */
+  language?: string;
 };
 
 export interface Notification {
