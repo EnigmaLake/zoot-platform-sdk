@@ -11,6 +11,7 @@ import {
   UserCurrencyV2,
   InfoScreenState,
   PlayAmountViewState,
+  ServiceMessage,
 } from "./types";
 
 export const sendEventResponse = async (
@@ -109,6 +110,10 @@ export const notifyWithPlayOutcome = async (payload: PlayOutcomePayload) => {
 
 export const showNotificationEvent = async (message: Notification) => {
   await sendEventResponse(EVENTS.EL_SHOW_TOAST, message);
+};
+
+export const showServiceMessageEvent = async (message: ServiceMessage) => {
+  await sendEventResponse(EVENTS.EL_SHOW_SERVICE_MESSAGE, message);
 };
 
 export const toggleGameViewEvent = async (data: GameExpandedView) => {

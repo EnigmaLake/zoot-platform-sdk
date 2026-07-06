@@ -30,6 +30,7 @@ export enum EVENTS {
   EL_SET_ALL_PLINKO_BALLS_DROPPED = "EL_SET_ALL_PLINKO_BALLS_DROPPED",
   EL_SET_TOGGLE_INFO_SCREEN = "EL_SET_TOGGLE_INFO_SCREEN",
   EL_SET_TOGGLE_PLAY_AMOUNT_VIEW = "EL_SET_TOGGLE_PLAY_AMOUNT_VIEW",
+  EL_SHOW_SERVICE_MESSAGE = "EL_SHOW_SERVICE_MESSAGE",
 }
 
 export interface UserBalance {
@@ -149,6 +150,13 @@ export interface Notification {
   message: string;
 }
 
+// Content for the host-rendered "Service message" popup (e.g. EveryMatrix
+// Casino Loss Limit). Sent from a game via showServiceMessageEvent.
+export interface ServiceMessage {
+  title: string;
+  body: string;
+}
+
 export enum Currency {
   SWEEPS = "sweeps",
   GOLD = "gold",
@@ -176,7 +184,8 @@ export type RequestDataEvent =
   | PlayLimitsV2
   | PlinkoBallsDroppingStatus
   | InfoScreenState
-  | PlayAmountViewState;
+  | PlayAmountViewState
+  | ServiceMessage;
 
 export interface GetUserInformationEvent {
   type: EVENTS.EL_USER_INFORMATION;
