@@ -150,11 +150,12 @@ export interface Notification {
   message: string;
 }
 
-// Content for the host-rendered "Service message" popup (e.g. EveryMatrix
-// Casino Loss Limit). Sent from a game via showServiceMessageEvent.
+// Identifies which host-rendered "Service message" popup to show (e.g.
+// "LOSS_LIMIT" for the EveryMatrix Casino Loss Limit). Sent from a game via
+// showServiceMessageEvent. The copy for each code lives in the host, so it is
+// never duplicated across games.
 export interface ServiceMessage {
-  title: string;
-  body: string;
+  code: string;
 }
 
 export enum Currency {
