@@ -99,6 +99,9 @@ export interface PlinkoBallsDroppingStatus {
 
 export interface InfoScreenState {
   isOpen: boolean;
+  // The info screen covers the whole game frame; the platform hides its game
+  // widgets while it is open. Leave it out for an info screen that does not.
+  isFullscreen?: boolean;
 }
 
 export interface PlayAmountViewState {
